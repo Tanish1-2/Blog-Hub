@@ -5,9 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Hub - Create & Share Stories</title>
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Color palette */
+        :root {
+            --parchment: #edede9ff;
+            --dust-grey: #d6ccc2ff;
+            --linen: #f5ebe0ff;
+            --powder-petal: #e3d5caff;
+            --almond-silk: #d5bdafff;
+            --spacing: 16px;
+        }
+
+        /* Fixed Navbar */
+        .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+            background: linear-gradient(135deg, var(--almond-silk), var(--dust-grey)) !important;
+        }
+
+        body {
+            padding-top: 60px;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
         .project-about {
-            background: white;
+            background: var(--parchment);
             padding: 80px var(--spacing);
         }
 
@@ -15,7 +51,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: #1a1a2e;
+            color: #3a3a3a;
         }
 
         .about-grid {
@@ -29,7 +65,11 @@
         .about-text {
             font-size: 1.05rem;
             line-height: 1.8;
-            color: #555;
+            color: #5a5a5a;
+        }
+
+        .about-text h3 {
+            color: #3a3a3a;
         }
 
         .about-text p {
@@ -44,7 +84,7 @@
         .features-list li {
             padding: 12px 0;
             font-size: 1.05rem;
-            color: #555;
+            color: #5a5a5a;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -56,16 +96,18 @@
         }
 
         .tech-stack {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--powder-petal), var(--almond-silk));
+            color: #3a3a3a;
             padding: 40px;
             border-radius: 12px;
             margin-top: 30px;
+            border: 1px solid var(--dust-grey);
         }
 
         .tech-stack h3 {
             margin-bottom: 20px;
             font-size: 1.5rem;
+            color: #3a3a3a;
         }
 
         .tech-grid {
@@ -75,15 +117,17 @@
         }
 
         .tech-item {
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--linen);
             padding: 15px;
             border-radius: 8px;
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--dust-grey);
+            color: #3a3a3a;
         }
 
         .tech-item strong {
             display: block;
             margin-bottom: 5px;
+            color: #3a3a3a;
         }
 
         .footer-content {
@@ -95,12 +139,12 @@
 
         .footer-section h3 {
             margin-bottom: 20px;
-            color: white;
+            color: #3a3a3a;
             font-size: 1.1rem;
         }
 
         .footer-section p {
-            color: #ddd;
+            color: #5a5a5a;
             font-size: 0.95rem;
             line-height: 1.8;
             margin-bottom: 10px;
@@ -115,21 +159,25 @@
         }
 
         .footer-links a {
-            color: #ff6b35;
+            color: #5a5a5a;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: #f7931e;
+            color: #3a3a3a;
             text-decoration: underline;
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(0,0,0,0.08);
             padding-top: 30px;
             text-align: center;
-            color: #ddd;
+            color: #5a5a5a;
+        }
+
+        .footer-bottom p {
+            margin: 5px 0;
         }
 
         .social-footer {
@@ -145,16 +193,17 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background: #ff6b35;
+            background: var(--almond-silk);
+            border: 1px solid var(--dust-grey);
             border-radius: 50%;
-            color: white;
+            color: #3a3a3a;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1.2rem;
         }
 
         .social-footer a:hover {
-            background: #f7931e;
+            background: var(--powder-petal);
             transform: translateY(-3px);
         }
 
@@ -174,161 +223,166 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">📚 Blog Hub</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#categories" class="nav-link">Categories</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="hero" id="home">
-        <div class="hero-content">
-            <h1>Welcome to Blog Hub</h1>
-            <p>Create, Share, and Explore Amazing Stories</p>
-            <button class="btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior: 'smooth'})">
-                Explore Categories
-            </button>
-        </div>
-    </header>
-
-    <section class="categories-section" id="categories">
-        <div class="container">
-            <h2>Choose Your Category</h2>
-            <div class="categories-grid">
-                <div class="category-card" onclick="goToCategory('games')">
-                    <div class="category-icon">🎮</div>
-                    <h3>Games</h3>
-                    <p>Gaming news, reviews & tips</p>
-                </div>
-                <div class="category-card" onclick="goToCategory('news')">
-                    <div class="category-icon">📰</div>
-                    <h3>News</h3>
-                    <p>Latest breaking news & updates</p>
-                </div>
-                <div class="category-card" onclick="goToCategory('entertainment')">
-                    <div class="category-icon">🎬</div>
-                    <h3>Entertainment</h3>
-                    <p>Movies, music & celebrities</p>
-                </div>
-                <div class="category-card" onclick="goToCategory('sports')">
-                    <div class="category-icon">⚽</div>
-                    <h3>Sports</h3>
-                    <p>Sports news & highlights</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="project-about" id="about">
-        <div class="container">
-            <h2>About Blog Hub</h2>
-            
-            <div class="about-grid">
-                <div class="about-text">
-                    <h3 style="color: #1a1a2e; margin-bottom: 20px;">What is Blog Hub?</h3>
-                    <p>Blog Hub is a modern, open-source blogging platform that empowers anyone to create, share, and discover amazing content. Whether you're passionate about gaming, news, entertainment, or sports, this platform provides you with the tools to express yourself and connect with a global community of writers and readers.</p>
-                    <p>With a clean, user-friendly interface and powerful features, Blog Hub makes publishing your thoughts easier than ever. No complicated setup, no paid subscriptions – just pure, simple blogging.</p>
-                </div>
-                <div class="tech-stack">
-                    <h3>Key Features</h3>
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <strong>📝 Create Blogs</strong>
-                            Easy-to-use editor
-                        </div>
-                        <div class="tech-item">
-                            <strong>🌍 Share Globally</strong>
-                            Deploy on Netlify/GitHub
-                        </div>
-                        <div class="tech-item">
-                            <strong>💾 Auto-Save</strong>
-                            LocalStorage persistence
-                        </div>
-                        <div class="tech-item">
-                            <strong>🎨 Beautiful UI</strong>
-                            Modern design system
-                        </div>
-                        <div class="tech-item">
-                            <strong>📱 Responsive</strong>
-                            Mobile-friendly
-                        </div>
-                        <div class="tech-item">
-                            <strong>⚡ Fast</strong>
-                            Instant loading
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="background: #f5f5f5; padding: 40px; border-radius: 12px; margin-top: 40px;">
-                <h3 style="color: #1a1a2e; margin-bottom: 20px;">Built With Modern Technologies</h3>
-                <ul class="features-list">
-                    <li><strong>HTML5</strong> - Semantic markup for better structure</li>
-                    <li><strong>CSS3</strong> - Modern styling with variables and animations</li>
-                    <li><strong>JavaScript (ES6+)</strong> - Powerful client-side functionality</li>
-                    <li><strong>LocalStorage API</strong> - Persistent data storage in browser</li>
-                    <li><strong>Firebase (Optional)</strong> - Real-time database for shared blogs</li>
-                    <li><strong>Git & GitHub</strong> - Version control and hosting</li>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">📚 Blog Hub</div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#categories" class="nav-link">Categories</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
                 </ul>
             </div>
+        </nav>
 
-            <div style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: white; padding: 40px; border-radius: 12px; margin-top: 40px; text-align: center;">
-                <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Ready to Start Blogging?</h3>
-                <p style="margin-bottom: 20px;">Choose a category above and create your first blog post today!</p>
-                <button class="btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior: 'smooth'})">
-                    Get Started
-                </button>
-            </div>
-        </div>
-    </section>
+        <main>
+            <header class="hero" id="home">
+                <div class="hero-content">
+                    <h1>Welcome to Blog Hub</h1>
+                    <p>Create, Share, and Explore Amazing Stories</p>
+                    <button class="btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior: 'smooth'})">
+                        Explore Categories
+                    </button>
+                </div>
+            </header>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>📚 Blog Hub</h3>
-                    <p>A free, open-source blogging platform for creators worldwide. Share your thoughts, stories, and insights with the world.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#categories">Categories</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="html/games.html">Games</a></li>
-                        <li><a href="html/news.html">News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="html/games.html">🎮 Games</a></li>
-                        <li><a href="html/news.html">📰 News</a></li>
-                        <li><a href="html/entertainment.html">🎬 Entertainment</a></li>
-                        <li><a href="html/sports.html">⚽ Sports</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <p>Follow us on social media for updates and featured blogs.</p>
-                    <div class="social-footer">
-                        <a href="#" title="Twitter">𝕏</a>
-                        <a href="#" title="GitHub">⚙️</a>
-                        <a href="#" title="LinkedIn">💼</a>
+            <section class="categories-section" id="categories">
+                <div class="container">
+                    <h2>Choose Your Category</h2>
+                    <div class="categories-grid">
+                        <div class="category-card" onclick="goToCategory('games')">
+                            <div class="category-icon">🎮</div>
+                            <h3>Games</h3>
+                            <p>Gaming news, reviews & tips</p>
+                        </div>
+                        <div class="category-card" onclick="goToCategory('news')">
+                            <div class="category-icon">📰</div>
+                            <h3>News</h3>
+                            <p>Latest breaking news & updates</p>
+                        </div>
+                        <div class="category-card" onclick="goToCategory('entertainment')">
+                            <div class="category-icon">🎬</div>
+                            <h3>Entertainment</h3>
+                            <p>Movies, music & celebrities</p>
+                        </div>
+                        <div class="category-card" onclick="goToCategory('sports')">
+                            <div class="category-icon">⚽</div>
+                            <h3>Sports</h3>
+                            <p>Sports news & highlights</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 Blog Hub. Open source & free. Built with ❤️ for creators worldwide.</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">Made with HTML • CSS • JavaScript • Love</p>
+            <section class="project-about" id="about">
+                <div class="container">
+                    <h2>About Blog Hub</h2>
+                    
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <h3>What is Blog Hub?</h3>
+                            <p>Blog Hub is a modern, open-source blogging platform that empowers anyone to create, share, and discover amazing content. Whether you're passionate about gaming, news, entertainment, or sports, this platform provides you with the tools to express yourself and connect with a global community of writers and readers.</p>
+                            <p>With a clean, user-friendly interface and powerful features, Blog Hub makes publishing your thoughts easier than ever. No complicated setup, no paid subscriptions – just pure, simple blogging.</p>
+                        </div>
+                        <div class="tech-stack">
+                            <h3>Key Features</h3>
+                            <div class="tech-grid">
+                                <div class="tech-item">
+                                    <strong>📝 Create Blogs</strong>
+                                    Easy-to-use editor
+                                </div>
+                                <div class="tech-item">
+                                    <strong>🌍 Share Globally</strong>
+                                    Deploy on Netlify/GitHub
+                                </div>
+                                <div class="tech-item">
+                                    <strong>💾 Auto-Save</strong>
+                                    LocalStorage persistence
+                                </div>
+                                <div class="tech-item">
+                                    <strong>🎨 Beautiful UI</strong>
+                                    Modern design system
+                                </div>
+                                <div class="tech-item">
+                                    <strong>📱 Responsive</strong>
+                                    Mobile-friendly
+                                </div>
+                                <div class="tech-item">
+                                    <strong>⚡ Fast</strong>
+                                    Instant loading
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--linen); padding: 40px; border-radius: 12px; margin-top: 40px; border: 1px solid var(--dust-grey);">
+                        <h3 style="color: #3a3a3a; margin-bottom: 20px;">Built With Modern Technologies</h3>
+                        <ul class="features-list">
+                            <li><strong>HTML5</strong> - Semantic markup for better structure</li>
+                            <li><strong>CSS3</strong> - Modern styling with variables and animations</li>
+                            <li><strong>JavaScript (ES6+)</strong> - Powerful client-side functionality</li>
+                            <li><strong>LocalStorage API</strong> - Persistent data storage in browser</li>
+                            <li><strong>Firebase (Optional)</strong> - Real-time database for shared blogs</li>
+                            <li><strong>Git & GitHub</strong> - Version control and hosting</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, var(--powder-petal), var(--almond-silk)); color: #3a3a3a; padding: 40px; border-radius: 12px; margin-top: 40px; text-align: center; border: 1px solid var(--dust-grey);">
+                        <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Ready to Start Blogging?</h3>
+                        <p style="margin-bottom: 20px; color: #5a5a5a;">Choose a category above and create your first blog post today!</p>
+                        <button class="btn-primary" onclick="document.getElementById('categories').scrollIntoView({behavior: 'smooth'})">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>📚 Blog Hub</h3>
+                        <p>A free, open-source blogging platform for creators worldwide. Share your thoughts, stories, and insights with the world.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#categories">Categories</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="html/games.html">Games</a></li>
+                            <li><a href="html/news.html">News</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Categories</h3>
+                        <ul class="footer-links">
+                            <li><a href="html/games.html">🎮 Games</a></li>
+                            <li><a href="html/news.html">📰 News</a></li>
+                            <li><a href="html/entertainment.html">🎬 Entertainment</a></li>
+                            <li><a href="html/sports.html">⚽ Sports</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Connect</h3>
+                        <p>Follow us on social media for updates and featured blogs.</p>
+                        <div class="social-footer">
+                            <a href="https://x.com/?lang=en-in" title="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://instagram.com" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://facebook.com" title="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Blog Hub. Open source & free. Built with ❤️ for creators worldwide.</p>
+                    <p>Made with HTML • CSS • JavaScript • Love</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
