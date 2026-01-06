@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - Blog Hub</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/category.css">
+    <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">📚 Blog Hub</div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html#categories" class="nav-link">Categories</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="category-header">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        <h1></h1>
+        <button class="create-blog-btn">✍️ Create New Blog</button>
+    </header>
+
+    <section class="blogs-container">
+        <div class="container">
+            <div class="blogs-grid"></div>
+        </div>
+    </section>
+
+    <!-- View Blog Modal -->
+    <div id="viewBlogModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('viewBlogModal')">&times;</span>
+            <h2 id="viewBlogTitle"></h2>
+            <div class="blog-meta" style="margin: 15px 0;">
+                <span id="viewBlogAuthor"></span>
+                <span id="viewBlogDate"></span>
+            </div>
+            <div id="viewBlogContent" style="line-height: 1.8; font-size: 1.05rem;"></div>
+        </div>
+    </div>
+
+    <!-- Create Blog Modal -->
+    <div id="createBlogModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createBlogModal')">&times;</span>
+            <h2>Create New Blog</h2>
+            <form class="blog-form" id="blogForm" onsubmit="submitBlogForm(event)">
+                <div class="form-group">
+                    <label for="blogTitle">Blog Title</label>
+                    <input type="text" id="blogTitle" required placeholder="Enter blog title">
+                </div>
+                <div class="form-group">
+                    <label for="blogAuthor">Your Name</label>
+                    <input type="text" id="blogAuthor" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="blogExcerpt">Short Description</label>
+                    <input type="text" id="blogExcerpt" required placeholder="Brief summary of your blog">
+                </div>
+                <div class="form-group">
+                    <label for="blogContent">Full Content</label>
+                    <textarea id="blogContent" required placeholder="Write your blog content here..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Publish Blog</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Blog Hub. Built with ❤️ for creators</p>
+        </div>
+    </footer>
+
+    <script src="../js/category.js"></script>
+</body>
+</html>
